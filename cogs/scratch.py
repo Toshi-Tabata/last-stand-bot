@@ -19,7 +19,8 @@ class Scratch(commands.Cog):
 
         import subprocess
         await ctx.send(f"Attempting to restart!")
-        pull_out = subprocess.Popen(["git", "pull"], cwd="/home/pi/programming/python/laststand/lastStandBot").wait()
+        pull_out = subprocess.run(["git", "pull"], cwd="/home/pi/programming/python/laststand/lastStandBot", check=True, stdout=subprocess.PIPE).stdout
+
         print(f"pull out was {pull_out}")
         if pull_out == was_unsuccessful:
             await ctx.send(f"No changes. Not restarting")
