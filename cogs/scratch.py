@@ -15,8 +15,10 @@ class Scratch(commands.Cog):
     @commands.command()
     async def scratch(self, ctx, *msgs):
         """scratch command for testing things"""
-
-        await ctx.send("hello world")
+        import subprocess
+        shellscript = subprocess.Popen(["update_from_github.sh"])
+        returncode = shellscript.wait()  # blocks until shellscript is done
+        await ctx.send(returncode)
 
 
     @commands.command()
