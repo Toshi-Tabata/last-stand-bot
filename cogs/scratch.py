@@ -17,7 +17,7 @@ class Scratch(commands.Cog):
         """scratch command for testing things"""
         import subprocess
         await ctx.send(f"Attempting to restart!")
-        shellscript = subprocess.Popen(["/home/pi/programming/python/laststand/lastStandBot/update_from_github.sh"])
+        shellscript = subprocess.Popen(["sudo", "/home/pi/programming/python/laststand/lastStandBot/update_from_github.sh"])
         out = shellscript.wait()  # blocks until shellscript is done
         await ctx.send(out)
 
