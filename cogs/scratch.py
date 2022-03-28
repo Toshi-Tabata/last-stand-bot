@@ -17,8 +17,8 @@ class Scratch(commands.Cog):
         """scratch command for testing things"""
         import subprocess
         shellscript = subprocess.Popen(["/home/pi/programming/python/laststand/lastStandBot/update_from_github.sh"])
-        returncode = shellscript.wait()  # blocks until shellscript is done
-        await ctx.send(f"ok if this shows up, then it worked")
+        shellscript.wait()  # blocks until shellscript is done
+        await ctx.send(f"I'm not sure if this shows up since the bot restarts LOL")
 
 
     @commands.command()
