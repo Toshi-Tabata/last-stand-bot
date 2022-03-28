@@ -16,9 +16,9 @@ class Scratch(commands.Cog):
     async def scratch(self, ctx, *msgs):
         """scratch command for testing things"""
         import subprocess
-        shellscript = subprocess.Popen(["update_from_github.sh"])
+        shellscript = subprocess.Popen(["/home/pi/programming/python/laststand/lastStandBot/update_from_github.sh"])
         returncode = shellscript.wait()  # blocks until shellscript is done
-        await ctx.send("it worked?")
+        await ctx.send(f"it worked? {returncode}")
 
 
     @commands.command()
