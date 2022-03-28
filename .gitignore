@@ -1,0 +1,7 @@
+token.json
+__pycache__
+.idea
+
+# Debugging files
+log.txt
+scratch.py
