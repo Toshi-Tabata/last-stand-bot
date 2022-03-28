@@ -15,16 +15,21 @@ class Scratch(commands.Cog):
     @commands.command()
     async def scratch(self, ctx, *msgs):
         """scratch command for testing things"""
-        was_unsuccessful = "Already up to date."
+        pickle_id = 104812942595272704
+        if ctx.author.id != pickle_id:
+            return
+
+
+        was_unsuccessful = b"Already up to date.\n"
 
         import subprocess
-        await ctx.send(f"Attempting to restart!")
-        pull_out = subprocess.run(["git", "pull"], cwd="/home/pi/programming/python/laststand/lastStandBot", check=True, stdout=subprocess.PIPE).stdout
 
-        print(f"pull out was {pull_out}")
+        pull_out = subprocess.run(["git", "pull"], cwd="/home/pi/programming/python/laststand/lastStandBot", stdout=subprocess.PIPE).stdout
+
         if pull_out == was_unsuccessful:
             await ctx.send(f"No changes. Not restarting")
         else:
+            await ctx.send(f"Attempting to restart!")
             subprocess.Popen(["sudo", "systemctl", "restart",  "laststandbot"]).wait()
             print("this is after restart")
 
