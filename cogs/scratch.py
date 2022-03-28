@@ -16,10 +16,10 @@ class Scratch(commands.Cog):
     async def scratch(self, ctx, *msgs):
         """scratch command for testing things"""
         import subprocess
+        await ctx.send(f"Attempting to restart!")
         shellscript = subprocess.Popen(["/home/pi/programming/python/laststand/lastStandBot/update_from_github.sh"])
-        shellscript.wait()  # blocks until shellscript is done
-        await ctx.send(f"I'm not sure if this shows up since the bot restarts LOL")
-
+        out = shellscript.wait()  # blocks until shellscript is done
+        await ctx.send(out)
 
     @commands.command()
     async def ping(self, ctx, *msgs):
