@@ -23,7 +23,7 @@ class Scratch(commands.Cog):
     async def ping(self, ctx, *msgs):
         """pong!"""
         print(msgs)
-        await ctx.send("pongers!")
+        await ctx.send("stop procrastinating pickle")
 
 
 
