@@ -19,12 +19,12 @@ class Scratch(commands.Cog):
 
         import subprocess
         await ctx.send(f"Attempting to restart!")
-        pull_out = subprocess.Popen(["git pull"], cwd="/home/pi/programming/python/laststand/lastStandBot").wait()
+        pull_out = subprocess.Popen(["git", "pull"], cwd="/home/pi/programming/python/laststand/lastStandBot").wait()
         print(f"pull out was {pull_out}")
         if pull_out == was_unsuccessful:
             await ctx.send(f"No changes. Not restarting")
         else:
-            subprocess.Popen(["sudo systemctl restart laststandbot"], cwd="/home/pi/programming/python/laststand/lastStandBot").wait()
+            subprocess.Popen(["sudo", "systemctl", "restart",  "laststandbot"]).wait()
             print("this is after restart")
 
     @commands.command()
