@@ -15,11 +15,17 @@ class Scratch(commands.Cog):
     @commands.command()
     async def scratch(self, ctx, *msgs):
         """scratch command for testing things"""
+        was_unsuccessful = "Already up to date."
+
         import subprocess
         await ctx.send(f"Attempting to restart!")
-        shellscript = subprocess.Popen(["/home/pi/programming/python/laststand/lastStandBot/update_from_github.sh"])
-        out = shellscript.wait()  # blocks until shellscript is done
-        await ctx.send(out)
+        pull_out = subprocess.Popen(["git -C /home/pi/programming/python/laststand/lastStandBot pull origin"]).wait()
+
+        if pull_out == was_unsuccessful:
+            await ctx.send(f"No changes. Not restarting")
+        else:
+            subprocess.Popen(["sudo systemctl restart laststandbot"]).wait()
+            print("this is after restart")
 
     @commands.command()
     async def ping(self, ctx, *msgs):
