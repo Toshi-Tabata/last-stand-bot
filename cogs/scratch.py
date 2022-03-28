@@ -18,7 +18,7 @@ class Scratch(commands.Cog):
         import subprocess
         shellscript = subprocess.Popen(["update_from_github.sh"])
         returncode = shellscript.wait()  # blocks until shellscript is done
-        await ctx.send(returncode)
+        await ctx.send("it worked?")
 
 
     @commands.command()
